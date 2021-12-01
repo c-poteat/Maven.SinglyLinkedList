@@ -88,7 +88,7 @@ public class SinglyLinkedList<T> {
             }
             return false;
         }
-
+        
         public int find(T element) {
             int currentIndex = 0;
             Node currentNode = head;
@@ -104,17 +104,37 @@ public class SinglyLinkedList<T> {
             return -1;
         }
 
-        public void size() {
-
+        public int size() {
+            int currentIndex = 0;
+            Node currentNode = head;
+            while (currentNode != null) {
+                currentIndex++;
+            }
+            return currentIndex;
         }
 
-        public void get() {
-
+        public T get(int index) {
+            int currentIndex = 0;
+            Node currentNode = head;
+            while (currentNode != null && currentIndex != index) {
+                currentNode = currentNode.next;
+                currentIndex++;
+            }
+            if (currentIndex == index && currentNode != null) {
+                return (T) currentNode.data;
+            }
+            return null;
         }
 
+        public SinglyLinkedList<T> copy() {
+            SinglyLinkedList<T> newList = new SinglyLinkedList<T>();
+            Node currentNode = head;
 
-        public void copy() {
-
+            while (currentNode != null) {
+                newList.add(currentNode.data);
+                currentNode = currentNode.next;
+            }
+            return newList;
         }
 
         public void sort() {
